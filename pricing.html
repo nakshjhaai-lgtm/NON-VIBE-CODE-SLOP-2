@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing · PixelForge</title>
+    <meta
+      name="description"
+      content="PixelForge pricing: a free plan, Studio at $24 per month and Team at $48 per seat. Monthly or yearly billing, full feature comparison, and what happens when you downgrade."
+    />
+    <link rel="canonical" href="https://pixelforge.studio/pricing.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f0f1f2" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pixelforge.studio/pricing.html" />
+    <meta property="og:title" content="PixelForge pricing" />
+    <meta property="og:description" content="Free, Studio and Team plans with a full feature comparison." />
+    <meta property="og:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preload" href="assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/site.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="PixelForge, home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+            <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="var(--paper)" />
+            <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+          </svg>
+          <span class="brand__word">PixelForge</span>
+          <span class="brand__badge" translate="no">v2.4.0</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav__link" href="index.html#capabilities">Capabilities</a>
+          <a class="nav__link" href="index.html#examples">Examples</a>
+          <a class="nav__link" href="pricing.html" aria-current="page">Pricing</a>
+          <a class="nav__link" href="docs.html">Docs</a>
+          <a class="nav__link" href="changelog.html">Changelog</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-search-open aria-label="Search this site">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" />
+            </svg>
+          </button>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+            <span class="theme-toggle__thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
+              </svg>
+            </span>
+            <span class="visually-hidden">Theme: <span data-theme-label>Light</span></span>
+          </button>
+          <a class="btn btn--primary btn--sm" href="contact.html" data-append-utm>Start building</a>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Mobile">
+        <a href="index.html#capabilities">Capabilities</a>
+        <a href="index.html#examples">Examples</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="docs.html">Docs</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-actions">
+        <a class="btn btn--primary" href="contact.html" data-append-utm>Start building</a>
+        <button class="btn btn--secondary" type="button" data-search-open>Search this site</button>
+      </div>
+    </div>
+
+    <main id="main">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumbs" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Pricing</span></li>
+          </ol>
+        </nav>
+      </div>
+
+      <section class="page-head">
+        <div class="container">
+          <p class="eyebrow">Pricing</p>
+          <h1>Pay per editor, not per render</h1>
+          <p class="lead" style="margin-top: var(--s-4)">
+            Every plan exports to at least one code target, and every export stays yours when you
+            stop paying. Yearly billing removes two months from the bill.
+          </p>
+          <div style="display: flex; align-items: center; gap: var(--s-3); margin-top: var(--s-5)">
+            <button class="chip" type="button" data-billing-toggle aria-pressed="false">
+              Bill yearly, save 2 months
+            </button>
+            <span class="mono" style="color: var(--ink-500)">Prices in USD, excluding tax</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-label="Plans">
+        <div class="plans">
+          <article class="plan">
+            <div class="plan__name"><h2>Free</h2></div>
+            <p class="plan__price num">$0 <span>forever</span></p>
+            <p class="plan__note">For one person trying the editor out.</p>
+            <ul class="plan__list" role="list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>3 scenes</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>HTML and CSS export</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>500 MB asset storage</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Community forum</li>
+            </ul>
+            <a class="btn btn--secondary" href="contact.html">Start free</a>
+          </article>
+
+          <article class="plan plan--featured">
+            <div class="plan__name"><h2>Studio</h2><span class="badge">Most picked</span></div>
+            <p class="plan__price num">
+              $<span data-monthly="24" data-yearly="19">24</span>
+              <span data-cycle-label>per month</span>
+            </p>
+            <p class="plan__note">For designers and small teams shipping client work.</p>
+            <ul class="plan__list" role="list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Unlimited scenes</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>All 6 export targets</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>100 GB asset storage</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Email support in one business day</li>
+            </ul>
+            <a class="btn btn--primary" href="contact.html" data-append-utm>Start 14 day trial</a>
+          </article>
+
+          <article class="plan">
+            <div class="plan__name"><h2>Team</h2></div>
+            <p class="plan__price num">
+              $<span data-monthly="48" data-yearly="38">48</span>
+              <span data-cycle-label>per month</span>
+            </p>
+            <p class="plan__note">Per seat, for groups that review each other's scenes.</p>
+            <ul class="plan__list" role="list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Everything in Studio</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Shared material library</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Review links with comments</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>Single sign on and audit log</li>
+            </ul>
+            <a class="btn btn--secondary" href="contact.html">Talk to us</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="compare-title">
+        <div class="section__head">
+          <p class="section-index">Compare</p>
+          <h2 id="compare-title">Every line, side by side</h2>
+          <p class="section__intro">
+            Numbers are per editor seat. Check marks mean included, and "Not included" means the plan
+            does not offer it.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table class="data">
+              <caption>Plan comparison, PixelForge 2.4.0</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Feature</th>
+                  <th scope="col" class="num-col">Free</th>
+                  <th scope="col" class="num-col">Studio</th>
+                  <th scope="col" class="num-col">Team</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Scenes</th>
+                  <td class="num-col">3</td>
+                  <td class="num-col">Unlimited</td>
+                  <td class="num-col">Unlimited</td>
+                </tr>
+                <tr>
+                  <th scope="row">Export targets</th>
+                  <td class="num-col">1</td>
+                  <td class="num-col">6</td>
+                  <td class="num-col">6</td>
+                </tr>
+                <tr>
+                  <th scope="row">Material nodes</th>
+                  <td class="num-col">12</td>
+                  <td class="num-col">24</td>
+                  <td class="num-col">24</td>
+                </tr>
+                <tr>
+                  <th scope="row">Asset storage</th>
+                  <td class="num-col">500 MB</td>
+                  <td class="num-col">100 GB</td>
+                  <td class="num-col">1 TB</td>
+                </tr>
+                <tr>
+                  <th scope="row">Physics baking</th>
+                  <td class="num-col">Not included</td>
+                  <td class="num-col">Included</td>
+                  <td class="num-col">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Review links</th>
+                  <td class="num-col">View only</td>
+                  <td class="num-col">View only</td>
+                  <td class="num-col">Comments</td>
+                </tr>
+                <tr>
+                  <th scope="row">Shared material library</th>
+                  <td class="num-col">Not included</td>
+                  <td class="num-col">Not included</td>
+                  <td class="num-col">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Single sign on</th>
+                  <td class="num-col">Not included</td>
+                  <td class="num-col">Not included</td>
+                  <td class="num-col">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Support response</th>
+                  <td class="num-col">Forum</td>
+                  <td class="num-col">1 business day</td>
+                  <td class="num-col">4 business hours</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="billing-faq-title">
+        <div class="section__head">
+          <p class="section-index">Billing questions</p>
+          <h2 id="billing-faq-title">Before you enter a card</h2>
+        </div>
+
+        <div class="faq">
+          <div class="faq__item" data-faq-item="downgrade">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-downgrade">
+                <span class="faq__no">01</span>
+                What happens to my scenes if I downgrade?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Nothing is deleted. Scenes above your plan's limit stay readable and
+                  exportable, you just cannot open them for editing until you free a slot or move
+                  back up.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq__item" data-faq-item="seats-change">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-seats-change">
+                <span class="faq__no">02</span>
+                Can I change seats mid-cycle?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Yes. Added seats are prorated to the day, and removed seats stay active until
+                  the end of the period you already paid for.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq__item" data-faq-item="invoice">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-invoice">
+                <span class="faq__no">03</span>
+                Do you invoice annually?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Team plans can be invoiced yearly with a purchase order. Ask on the
+                  <a href="contact.html">contact page</a> and we will send the paperwork.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq__item" data-faq-item="education">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-education">
+                <span class="faq__no">04</span>
+                Is there an education rate?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Students and teaching staff get Studio free for a year with an institutional
+                  email address. Send the address from the contact page.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq__item" data-faq-item="refund">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-refund">
+                <span class="faq__no">05</span>
+                What is the refund window?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Thirty days, no questions. Write to
+                  <a href="mailto:hello@pixelforge.studio">hello@pixelforge.studio</a> and the
+                  money goes back the way it came.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" aria-labelledby="pricing-cta">
+        <div class="container cta-band">
+          <div>
+            <h2 id="pricing-cta">Still deciding?</h2>
+            <p style="margin-top: var(--s-3)">
+              Open the free plan, export one scene, and see whether the code is something you
+              would commit. That takes about ten minutes.
+            </p>
+          </div>
+          <div style="display: grid; gap: var(--s-3)">
+            <a class="btn btn--primary" href="contact.html" data-append-utm>Start free</a>
+            <a class="btn btn--secondary" href="docs.html">Read the docs first</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="PixelForge, home">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+              <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="var(--paper)" />
+              <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+            </svg>
+            <span class="brand__word">PixelForge</span>
+          </a>
+          <p>A 3D editor that runs in a browser tab and writes code you can commit.</p>
+          <p class="mono">hello@pixelforge.studio</p>
+        </div>
+        <div class="footer-col">
+          <h2>Product</h2>
+          <ul role="list">
+            <li><a href="index.html#capabilities">Capabilities</a></li>
+            <li><a href="index.html#spec">Specification</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Docs</h2>
+          <ul role="list">
+            <li><a href="docs.html">Getting started</a></li>
+            <li><a href="docs.html#export">Export targets</a></li>
+            <li><a href="docs.html#shortcuts">Keyboard shortcuts</a></li>
+            <li><a href="docs.html#performance">Performance budget</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Company</h2>
+          <ul role="list">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="brand.html">Brand assets</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-note">
+        <div class="disclosure">
+          <p>
+            <strong>Demo disclosure.</strong> PixelForge is a fictional product built as a design
+            demonstration. Prices describe this build and no payment is taken anywhere on the
+            site.
+          </p>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 PixelForge</span>
+          <span>Last updated <time data-date datetime="2026-08-24">24 August 2026</time></span>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <a class="floating-contact" href="contact.html" data-floating-cta data-append-utm>Talk to us</a>
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+    </button>
+    <div class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+    <div class="backdrop" id="search-overlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search this site">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" />
+          </svg>
+          <label class="visually-hidden" for="search-input">Search this site</label>
+          <input id="search-input" type="search" placeholder="Search pages, docs and sections…" autocomplete="off" spellcheck="false" />
+          <button class="btn btn--quiet btn--sm" type="button" data-search-close>Esc</button>
+        </div>
+        <ul class="search-results" id="search-results" role="list"></ul>
+      </div>
+    </div>
+  </body>
+</html>
