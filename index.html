@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PixelForge: a browser 3D editor that exports code</title>
+    <meta
+      name="description"
+      content="PixelForge is a 3D editor that runs in the browser and exports React, Vue, Svelte or plain HTML and CSS. Live viewport, node materials, scroll timeline, no build step."
+    />
+    <link rel="canonical" href="https://pixelforge.studio/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#f0f1f2" />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pixelforge.studio/" />
+    <meta property="og:title" content="PixelForge: a browser 3D editor that exports code" />
+    <meta
+      property="og:description"
+      content="Model in the browser, then export React, Vue, Svelte or plain HTML and CSS. Live viewport, node materials, scroll timeline."
+    />
+    <meta property="og:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="PixelForge wordmark beside a wireframe sphere on a light graphite background." />
+    <meta property="og:site_name" content="PixelForge" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PixelForge: a browser 3D editor that exports code" />
+    <meta
+      name="twitter:description"
+      content="Model in the browser, then export React, Vue, Svelte or plain HTML and CSS."
+    />
+    <meta name="twitter:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link
+      rel="preload"
+      href="assets/fonts/archivo-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/ibm-plex-mono-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/viewport.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://pixelforge.studio/#org",
+            "name": "PixelForge",
+            "url": "https://pixelforge.studio/",
+            "email": "hello@pixelforge.studio",
+            "description": "Maker of a browser based 3D editor that exports web code."
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "PixelForge",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://pixelforge.studio/",
+            "softwareVersion": "2.4.0",
+            "publisher": { "@id": "https://pixelforge.studio/#org" },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              {
+                "@type": "Offer",
+                "name": "Studio",
+                "price": "24",
+                "priceCurrency": "USD"
+              },
+              {
+                "@type": "Offer",
+                "name": "Team",
+                "price": "48",
+                "priceCurrency": "USD"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does PixelForge export?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "React, Vue, Svelte and plain HTML with CSS, plus glTF and a standalone WebGL bundle."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to write code to use PixelForge?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Scenes are built in the visual editor. Developers can open the generated source at any point and keep working by hand."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which browsers run the editor?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Chrome and Edge 113 or newer, Safari 16.4 or newer and Firefox 115 or newer, because the viewport needs WebGL2."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="PixelForge, home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+            <path
+              d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z"
+              fill="var(--paper)"
+            />
+            <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+          </svg>
+          <span class="brand__word">PixelForge</span>
+          <span class="brand__badge" translate="no">v2.4.0</span>
+        </a>
+
+        <nav class="nav" aria-label="Main">
+          <a class="nav__link" href="index.html#capabilities">Capabilities</a>
+          <a class="nav__link" href="index.html#examples">Examples</a>
+          <a class="nav__link" href="pricing.html">Pricing</a>
+          <a class="nav__link" href="docs.html">Docs</a>
+          <a class="nav__link" href="changelog.html">Changelog</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-search-open aria-label="Search this site">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="M16 16l4.5 4.5" />
+            </svg>
+          </button>
+
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+            <span class="theme-toggle__thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
+              </svg>
+            </span>
+            <span class="visually-hidden">Theme: <span data-theme-label>Light</span></span>
+          </button>
+
+          <a class="btn btn--primary btn--sm" href="contact.html" data-append-utm>Start building</a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Mobile">
+        <a href="index.html#capabilities">Capabilities</a>
+        <a href="index.html#examples">Examples</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="docs.html">Docs</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-actions">
+        <a class="btn btn--primary" href="contact.html" data-append-utm>Start building</a>
+        <button class="btn btn--secondary" type="button" data-search-open>Search this site</button>
+      </div>
+    </div>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero__grid">
+          <p class="eyebrow">3D editor for the web</p>
+          <h1 id="hero-title">Model in 3D. Ship it as <em>code</em>.</h1>
+          <p class="lead">
+            PixelForge is a scene editor that runs in a browser tab and writes code you can
+            commit. Build geometry, wire up a material, bind it to scroll, then export React,
+            Vue, Svelte or plain HTML and CSS. No plugin, no build step, no lock-in.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="contact.html" data-append-utm>Start building</a>
+            <a class="btn btn--secondary" href="docs.html">Read the docs</a>
+          </div>
+          <p class="hero__meta">
+            <span>Version 2.4.0</span>
+            <span>Updated <time data-date datetime="2026-08-24">24 August 2026</time></span>
+            <span translate="no">0 third-party scripts</span>
+            <span>Runs on WebGL2</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="container" aria-label="Editor preview" style="padding-bottom: var(--s-9)">
+        <figure>
+          <div class="frame">
+            <div class="frame__bar">
+              <span class="frame__title" translate="no">untitled-scene.pforge</span>
+              <span class="frame__spacer"></span>
+              <span>WebGL2</span>
+              <span>Viewport</span>
+            </div>
+
+            <div class="app">
+              <div class="panel-left">
+                <p class="panel-title">Scene</p>
+                <ul class="tree" role="list">
+                  <li>
+                    <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+                    untitled-scene
+                  </li>
+                  <li class="tree__indent">
+                    <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l6-9 6 9z" /><path d="M14 6h7v7h-7z" /></svg>
+                    Camera
+                  </li>
+                  <li class="tree__indent">
+                    <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 3v2M12 19v2M3 12h2M19 12h2" /></svg>
+                    Light
+                  </li>
+                  <li class="tree__indent" aria-selected="true">
+                    <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 5v8l-8 5-8-5V8z" /><path d="M4 8l8 5 8-5" /></svg>
+                    Mesh_01
+                  </li>
+                  <li class="tree__indent">
+                    <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M6 17l3-6h6l3 6" /></svg>
+                    Ground
+                  </li>
+                </ul>
+              </div>
+
+              <div class="panel-center">
+                <div class="viewport" data-main-viewport>
+                  <canvas data-main-canvas aria-hidden="true"></canvas>
+                  <svg class="viewport__grid" aria-hidden="true" focusable="false">
+                    <defs>
+                      <pattern id="vpgrid" width="32" height="32" patternUnits="userSpaceOnUse">
+                        <path d="M32 0H0v32" fill="none" stroke="currentColor" stroke-width="0.5" />
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#vpgrid)" color="var(--border-strong)" />
+                  </svg>
+                  <div class="viewport__hud">
+                    <p class="viewport__readout" data-viewport-readout>rx 0° · ry 0° · 60 fps</p>
+                    <p class="viewport__hint">Drag to orbit · <span class="kbd">←</span> <span class="kbd">→</span></p>
+                  </div>
+                  <div class="viewport__controls">
+                    <button class="btn btn--secondary btn--sm" type="button" data-viewport-pause>
+                      <span data-pause-label>Pause</span> rotation
+                    </button>
+                    <button class="btn btn--secondary btn--sm" type="button" data-reset-scene>Reset</button>
+                  </div>
+                </div>
+                <div class="timeline">
+                  <span>Timeline</span>
+                  <span class="timeline__track" aria-hidden="true">
+                    <i class="timeline__key" style="left: 4%"></i>
+                    <i class="timeline__key" style="left: 34%"></i>
+                    <i class="timeline__key" style="left: 68%"></i>
+                    <i class="timeline__key" style="left: 96%"></i>
+                  </span>
+                  <span>4 keyframes</span>
+                </div>
+              </div>
+
+              <div class="panel-right">
+                <p class="panel-title">Inspector</p>
+                <div class="field-row">
+                  <span class="field-row__label">Position</span>
+                  <div class="axis-inputs">
+                    <label class="visually-hidden" for="pos-x">Position X</label>
+                    <input class="input num" id="pos-x" type="number" step="0.1" value="0.00" data-transform="tx" />
+                    <label class="visually-hidden" for="pos-y">Position Y</label>
+                    <input class="input num" id="pos-y" type="number" step="0.1" value="0.00" data-transform="ty" />
+                    <label class="visually-hidden" for="pos-z">Position Z</label>
+                    <input class="input num" id="pos-z" type="number" step="0.1" value="0.00" data-transform="tz" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <span class="field-row__label">Rotation</span>
+                  <div class="axis-inputs">
+                    <label class="visually-hidden" for="rot-x">Rotation X in degrees</label>
+                    <input class="input num" id="rot-x" type="number" step="5" value="-29" data-transform="rx" />
+                    <label class="visually-hidden" for="rot-y">Rotation Y in degrees</label>
+                    <input class="input num" id="rot-y" type="number" step="5" value="34" data-transform="ry" />
+                    <label class="visually-hidden" for="rot-z">Rotation Z in degrees</label>
+                    <input class="input num" id="rot-z" type="number" step="5" value="0" data-transform="rz" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <span class="field-row__label">Scale</span>
+                  <div class="axis-inputs">
+                    <label class="visually-hidden" for="scale-u">Uniform scale</label>
+                    <input class="input num" id="scale-u" type="number" step="0.05" min="0.2" max="3" value="1.00" data-transform="scale" />
+                    <span class="field-row__label" style="grid-column: span 2">42 vertices · 120 edges</span>
+                  </div>
+                </div>
+                <p class="panel-title" style="margin-top: var(--s-4)">Material</p>
+                <div class="field-row">
+                  <span class="field-row__label">Roughness</span>
+                  <span class="input num" style="display: flex; align-items: center">0.35</span>
+                </div>
+                <div class="field-row">
+                  <span class="field-row__label">Metalness</span>
+                  <span class="input num" style="display: flex; align-items: center">0.10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <b>Fig. 01</b>
+            <span>The PixelForge viewport, rendered live on this page in 4 KB of JavaScript.</span>
+            <span>Drag to orbit, or focus it and use the arrow keys.</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section container" id="capabilities" aria-labelledby="capabilities-title">
+        <div class="section__head">
+          <p class="section-index">01 / Capabilities</p>
+          <h2 id="capabilities-title">What the editor actually does</h2>
+          <p class="section__intro">
+            Six systems, one scene graph. Each one writes plain code on export, so nothing you
+            build here needs PixelForge to keep running.
+          </p>
+        </div>
+
+        <div class="capabilities">
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3l8 5v8l-8 5-8-5V8z" /><path d="M4 8l8 5 8-5M12 13v8" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">01</p>
+              <h3>Real-time viewport</h3>
+              <p>
+                Orbit, pan and frame a scene at 60 fps while shaders compile in the background.
+                The viewport is the document, not a preview of it.
+              </p>
+              <p class="capability__spec"><span>WebGL2</span><span>60 fps budget</span></p>
+            </div>
+          </article>
+
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="6" cy="6" r="2.4" /><circle cx="18" cy="12" r="2.4" />
+              <circle cx="6" cy="18" r="2.4" /><path d="M8.4 6h4.2a3 3 0 013 3v.6M8.4 18h4.2a3 3 0 003-3v-.6" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">02</p>
+              <h3>Node materials</h3>
+              <p>
+                Build a surface from PBR, fresnel and noise nodes. Every node maps to one uniform
+                in the exported shader, so the graph you see is the shader you ship.
+              </p>
+              <p class="capability__spec"><span>24 nodes</span><span>GLSL output</span></p>
+            </div>
+          </article>
+
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 5h16M4 12h10M4 19h6" /><path d="M17 15l3 3-3 3" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">03</p>
+              <h3>Scroll timeline</h3>
+              <p>
+                Bind any property to page scroll with keyframes and easing curves. The exporter
+                writes a single requestAnimationFrame loop with no library attached.
+              </p>
+              <p class="capability__spec"><span>Keyframes</span><span>9 easing curves</span></p>
+            </div>
+          </article>
+
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" /><path d="M14 17.5h7M17.5 14v7" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">04</p>
+              <h3>Instancing and LOD</h3>
+              <p>
+                Draw repeated geometry in a single call, then let distance swap in lower detail
+                meshes. Set the thresholds once and the exporter keeps them.
+              </p>
+              <p class="capability__spec"><span>1 draw call</span><span>3 LOD levels</span></p>
+            </div>
+          </article>
+
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 16c3-9 13-9 16 0" /><circle cx="12" cy="17.5" r="2" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">05</p>
+              <h3>Physics handles</h3>
+              <p>
+                Attach a rigid or soft body solver to a mesh, play the result back, then bake it
+                to keyframes so the export stays deterministic on slow devices.
+              </p>
+              <p class="capability__spec"><span>Rigid body</span><span>Soft body</span></p>
+            </div>
+          </article>
+
+          <article class="capability">
+            <svg class="capability__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 16V4" /><path d="M8 8l4-4 4 4" /><path d="M4 15v4a1 1 0 001 1h14a1 1 0 001-1v-4" />
+            </svg>
+            <div class="capability__body">
+              <p class="capability__index">06</p>
+              <h3>Code export</h3>
+              <p>
+                Export to React, Vue, Svelte or plain HTML and CSS. glTF and a standalone WebGL
+                bundle sit one click away for pipelines that start somewhere else.
+              </p>
+              <p class="capability__spec"><span>6 targets</span><span>Tree shaken</span></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="workflow" aria-labelledby="workflow-title">
+        <div class="section__head">
+          <p class="section-index">02 / Workflow</p>
+          <h2 id="workflow-title">Three steps, then you are done</h2>
+          <p class="section__intro">
+            Nothing here needs a project file to be converted at the end. The scene you edit is
+            the source of the code you get.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <p class="step__no">Step 01</p>
+            <h3>Build the scene</h3>
+            <p>
+              Start from a template or a primitive. Primitives, imported glTF and swept curves
+              all land in the same scene graph.
+            </p>
+          </article>
+          <article class="step">
+            <p class="step__no">Step 02</p>
+            <h3>Animate on scroll</h3>
+            <p>
+              Drop keyframes on the timeline, pick an easing curve, and scrub the page to check
+              the motion before you export it.
+            </p>
+          </article>
+          <article class="step">
+            <p class="step__no">Step 03</p>
+            <h3>Export the code</h3>
+            <p>Choose a target and copy the output. Here is what a React export looks like:</p>
+            <div class="code step__code">
+              <div class="code__bar">
+                <span translate="no">Scene.tsx</span>
+                <button type="button" data-copy="#snippet-scene" data-label="Copy">Copy</button>
+              </div>
+              <pre id="snippet-scene"><code><span class="tok-key">import</span> { Scene, Mesh } <span class="tok-key">from</span> <span class="tok-str">'@pixelforge/react'</span>;
+
+<span class="tok-com">// Generated by PixelForge 2.4.0. Edit freely.</span>
+<span class="tok-key">export default function</span> Hero() {
+  <span class="tok-key">return</span> (
+    &lt;<span class="tok-key">Scene</span> camera={{ fov: 35, position: [0, 1.2, 4] }}&gt;
+      &lt;<span class="tok-key">Mesh</span> name=<span class="tok-str">"Mesh_01"</span> geometry=<span class="tok-str">"geodesic"</span> /&gt;
+    &lt;/<span class="tok-key">Scene</span>&gt;
+  );
+}</code></pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="spec" aria-labelledby="spec-title">
+        <div class="section__head">
+          <p class="section-index">03 / Specification</p>
+          <h2 id="spec-title">Technical specification</h2>
+          <p class="section__intro">
+            The numbers a technical buyer asks for, in one place. Every row describes the build
+            documented at the bottom of this page.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table class="data">
+              <caption>PixelForge 2.4.0, published 24 August 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Renderer</th>
+                  <td>WebGL2</td>
+                  <td>Falls back to a static poster image when WebGL2 is missing.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Runtime</th>
+                  <td class="num-col">0 dependencies</td>
+                  <td>The exported bundle pulls in no framework of its own.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Export targets</th>
+                  <td class="num-col">6</td>
+                  <td>React, Vue, Svelte, HTML and CSS, glTF, standalone WebGL.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Browser support</th>
+                  <td>Chrome 113+, Safari 16.4+, Firefox 115+</td>
+                  <td>Editor requires WebGL2; exports run anywhere the target runs.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Offline mode</th>
+                  <td>Installable</td>
+                  <td>The editor is a progressive web app and stores scenes locally.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Scene format</th>
+                  <td translate="no">.pforge</td>
+                  <td>Plain JSON, documented in the file format section of the docs.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Plugin API</th>
+                  <td>4 hooks</td>
+                  <td>Register nodes, exporters, importers and viewport overlays.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Status</th>
+                  <td>Design demonstration</td>
+                  <td>
+                    PixelForge is a fictional product. Nothing on this site reports real usage,
+                    customers or performance measurements.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="examples" aria-labelledby="examples-title">
+        <div class="section__head">
+          <p class="section-index">04 / Examples</p>
+          <h2 id="examples-title">Six scenes that ship with the editor</h2>
+          <p class="section__intro">
+            Templates you can open, take apart and keep. Each one is a starting point rather than
+            a finished piece of client work.
+          </p>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <div class="gallery__filters" role="group" aria-label="Filter example scenes">
+            <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="chip" type="button" data-filter="geometry" aria-pressed="false">Geometry</button>
+            <button class="chip" type="button" data-filter="motion" aria-pressed="false">Motion</button>
+            <button class="chip" type="button" data-filter="material" aria-pressed="false">Material</button>
+          </div>
+
+          <div class="gallery__grid" data-gallery-grid>
+            <article class="scene" data-scene="geometry">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="geodesic" aria-hidden="true"></canvas>
+              </div>
+              <h3>Geodesic study</h3>
+              <p class="scene__desc">
+                A subdivided icosahedron with depth-cued edges. The default scene when you open
+                the editor for the first time.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">42 vertices</span><span>6 nodes</span></p>
+            </article>
+
+            <article class="scene" data-scene="geometry">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="torus" aria-hidden="true"></canvas>
+              </div>
+              <h3>Torus field</h3>
+              <p class="scene__desc">
+                Two hundred instanced rings in a single draw call, with LOD swapping below 40 per
+                cent screen height.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">1 draw call</span><span>11 nodes</span></p>
+            </article>
+
+            <article class="scene" data-scene="geometry">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="lattice" aria-hidden="true"></canvas>
+              </div>
+              <h3>Lattice grid</h3>
+              <p class="scene__desc">
+                A three by three by three lattice used to demonstrate instance transforms and
+                per-instance colour.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">27 points</span><span>4 nodes</span></p>
+            </article>
+
+            <article class="scene" data-scene="motion">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="helix" aria-hidden="true"></canvas>
+              </div>
+              <h3>Helix scroll</h3>
+              <p class="scene__desc">
+                Rotation bound to page scroll across four keyframes, with a spring curve on the
+                final 20 per cent.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">4 keyframes</span><span>8 nodes</span></p>
+            </article>
+
+            <article class="scene" data-scene="motion">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="torus" aria-hidden="true"></canvas>
+              </div>
+              <h3>Orbit drift</h3>
+              <p class="scene__desc">
+                A slow camera orbit baked to keyframes, the starting point for most hero
+                sections built in the editor.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">2 keyframes</span><span>3 nodes</span></p>
+            </article>
+
+            <article class="scene" data-scene="material">
+              <div class="scene__frame">
+                <canvas data-scene-thumb="lattice" aria-hidden="true"></canvas>
+              </div>
+              <h3>Fresnel shell</h3>
+              <p class="scene__desc">
+                A fresnel node driving opacity against a noise node, the shortest path to a glass
+                look without a texture.
+              </p>
+              <p class="scene__meta"><span>Template</span><span translate="no">5 nodes</span><span>No textures</span></p>
+            </article>
+          </div>
+
+          <div class="empty-state" data-gallery-empty hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 14l3-3 3 3 2-2" />
+            </svg>
+            <strong>No scenes in this filter yet</strong>
+            <p>Pick another category, or open the docs to build the scene yourself.</p>
+            <a class="btn btn--secondary btn--sm" href="docs.html">Open the docs</a>
+          </div>
+
+          <button class="btn btn--secondary" type="button" data-load-more>Load more scenes</button>
+        </div>
+      </section>
+
+      <section class="section container" id="plans" aria-labelledby="plans-title">
+        <div class="section__head">
+          <p class="section-index">05 / Plans</p>
+          <h2 id="plans-title">Pricing at a glance</h2>
+          <p class="section__intro">
+            Per editor seat, billed monthly or yearly. The full comparison lives on the pricing
+            page, including what happens when you downgrade.
+          </p>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <div class="plan__name"><h3>Free</h3></div>
+            <p class="plan__price num">$0 <span>forever</span></p>
+            <ul class="plan__list" role="list">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                3 scenes
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                HTML and CSS export
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Community forum
+              </li>
+            </ul>
+            <a class="btn btn--secondary" href="contact.html">Start free</a>
+          </article>
+
+          <article class="plan plan--featured">
+            <div class="plan__name"><h3>Studio</h3><span class="badge">Most picked</span></div>
+            <p class="plan__price num">
+              $<span data-monthly="24" data-yearly="19">24</span>
+              <span data-cycle-label>per month</span>
+            </p>
+            <ul class="plan__list" role="list">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Unlimited scenes
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                All 6 export targets
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                100 GB asset storage
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Email support in one business day
+              </li>
+            </ul>
+            <a class="btn btn--primary" href="contact.html" data-append-utm>Start 14 day trial</a>
+          </article>
+
+          <article class="plan">
+            <div class="plan__name"><h3>Team</h3></div>
+            <p class="plan__price num">
+              $<span data-monthly="48" data-yearly="38">48</span>
+              <span data-cycle-label>per month</span>
+            </p>
+            <ul class="plan__list" role="list">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Everything in Studio
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Shared material library
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Review links with comments
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                Single sign on
+              </li>
+            </ul>
+            <a class="btn btn--secondary" href="contact.html">Talk to us</a>
+          </article>
+        </div>
+
+        <p style="margin-top: var(--s-5)">
+          <a href="pricing.html">See the full plan comparison</a>
+        </p>
+      </section>
+
+      <section class="section container" id="faq" aria-labelledby="faq-title">
+        <div class="section__head">
+          <p class="section-index">06 / Questions</p>
+          <h2 id="faq-title">Frequently asked questions</h2>
+          <p class="section__intro">
+            The seven things people ask before they install. Anything else goes to
+            <a href="contact.html">the contact page</a>.
+          </p>
+        </div>
+
+        <div class="faq">
+          <div class="faq__item" data-faq-item="export">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-export">
+                <span class="faq__no">01</span>
+                What does PixelForge export?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  React, Vue, Svelte and plain HTML with CSS, plus glTF and a standalone WebGL
+                  bundle. The framework exports emit a component you own, not a wrapper around a
+                  runtime you have to keep.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="coding">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-coding">
+                <span class="faq__no">02</span>
+                Do I need to write code?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  No. Geometry, materials and timing are all edited visually. Developers can open
+                  the generated source at any point, edit it by hand and never return to the
+                  editor.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="offline">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-offline">
+                <span class="faq__no">03</span>
+                Can I work offline?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Yes. Install the editor as a progressive web app and it keeps scenes in local
+                  storage, so a train tunnel costs you nothing. Asset sync resumes when you are
+                  back online.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="browsers">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-browsers">
+                <span class="faq__no">04</span>
+                Which browsers run the editor?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  Chrome and Edge 113 or newer, Safari 16.4 or newer, and Firefox 115 or newer.
+                  The viewport needs WebGL2. Exported code has a wider reach because it only
+                  needs what your target framework needs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="seats">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-seats">
+                <span class="faq__no">05</span>
+                How are seats counted?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  One seat per person who opens the editor. Reviewers who only leave comments on
+                  a shared link are free, and removing a seat takes effect at the end of the
+                  billing period.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="trial">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-trial">
+                <span class="faq__no">06</span>
+                Is there a trial?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  The Free plan has no time limit. Studio features open for 14 days without a
+                  card, and exports made during a trial stay yours after it ends.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-faq-item="demo">
+            <h3>
+              <button class="faq__q" type="button" id="faq-btn-demo">
+                <span class="faq__no">07</span>
+                Is PixelForge a real product?
+                <svg class="faq__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+              </button>
+            </h3>
+            <div class="faq__a">
+              <div>
+                <p>
+                  No, and that is deliberate. PixelForge is a design demonstration. The
+                  specifications on this page describe the demo build, and this site reports no
+                  customers, usage figures or performance measurements, because inventing them
+                  would be the fastest way to lose your trust.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" aria-labelledby="cta-title">
+        <div class="container cta-band">
+          <div>
+            <p class="section-index">07 / Get started</p>
+            <h2 id="cta-title" style="margin-top: var(--s-3)">Build something in 3D today</h2>
+            <p style="margin-top: var(--s-3)">
+              Open a template, move one vertex, export the code. Leave your email if you want the
+              changelog when 2.5 lands.
+            </p>
+          </div>
+          <div style="display: grid; gap: var(--s-3); min-width: min(22rem, 100%)">
+            <form class="form" data-form novalidate>
+              <div class="field">
+                <label for="signup-email">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input
+                  id="signup-email"
+                  name="email"
+                  type="email"
+                  inputmode="email"
+                  autocomplete="email"
+                  spellcheck="false"
+                  placeholder="name@studio.com"
+                  data-validate="email"
+                  required
+                />
+                <p class="field__error" id="signup-email-error"></p>
+              </div>
+              <div class="honeypot" aria-hidden="true">
+                <label for="signup-company">Company</label>
+                <input id="signup-company" name="company" type="text" tabindex="-1" data-honeypot autocomplete="off" />
+              </div>
+              <button class="btn btn--primary" type="submit">Send me the changelog</button>
+              <p class="field__hint">
+                One email per release. Unsubscribe from any of them in one click.
+              </p>
+            </form>
+            <div class="form-status" data-form-status data-state="idle" tabindex="-1" data-success="You are on the list. Check your inbox for a confirmation link.">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5" /></svg>
+              <p data-status-text aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="PixelForge, home">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+              <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="var(--paper)" />
+              <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+            </svg>
+            <span class="brand__word">PixelForge</span>
+          </a>
+          <p>
+            A 3D editor that runs in a browser tab and writes code you can commit. Built by a
+            distributed team, no head office.
+          </p>
+          <p class="mono">hello@pixelforge.studio</p>
+        </div>
+
+        <div class="footer-col">
+          <h2>Product</h2>
+          <ul role="list">
+            <li><a href="index.html#capabilities">Capabilities</a></li>
+            <li><a href="index.html#spec">Specification</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Docs</h2>
+          <ul role="list">
+            <li><a href="docs.html">Getting started</a></li>
+            <li><a href="docs.html#export">Export targets</a></li>
+            <li><a href="docs.html#shortcuts">Keyboard shortcuts</a></li>
+            <li><a href="docs.html#performance">Performance budget</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Company</h2>
+          <ul role="list">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="brand.html">Brand assets</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-note">
+        <div class="disclosure">
+          <p>
+            <strong>Demo disclosure.</strong> PixelForge is a fictional product built as a design
+            demonstration. Specifications describe this build, and the site reports no customers,
+            usage figures or performance measurements. It sets no tracking cookies and loads no
+            third-party scripts, so nothing you do here leaves your device.
+          </p>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 PixelForge</span>
+          <span>Last updated <time data-date datetime="2026-08-24">24 August 2026</time></span>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="404.html">Not found page</a>
+        </div>
+      </div>
+    </footer>
+
+    <a class="floating-contact" href="contact.html" data-floating-cta data-append-utm>
+      Start building
+    </a>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+    </button>
+
+    <div class="cookie" data-cookie hidden role="region" aria-label="Cookie preferences">
+      <h2>Cookies</h2>
+      <p>
+        This site stores your theme and cookie choice locally and loads no analytics. You can
+        decline anyway; nothing here needs your permission to work.
+      </p>
+      <div class="cookie__actions">
+        <button class="btn btn--primary btn--sm" type="button" data-cookie-accept>Accept</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-cookie-reject>Decline</button>
+        <a class="btn btn--quiet btn--sm" href="privacy.html">Privacy policy</a>
+      </div>
+    </div>
+
+    <div class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+    <div class="backdrop" id="search-overlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search this site">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" />
+          </svg>
+          <label class="visually-hidden" for="search-input">Search this site</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search pages, docs and sections…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="btn btn--quiet btn--sm" type="button" data-search-close>
+            Esc
+          </button>
+        </div>
+        <ul class="search-results" id="search-results" role="list"></ul>
+      </div>
+    </div>
+
+    <div class="backdrop" id="confirm-overlay" hidden>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <div class="search-field" style="border-bottom: 1px solid var(--border)">
+          <h2 id="confirm-title" style="font-size: var(--fs-h4)">Reset the scene?</h2>
+        </div>
+        <div class="dialog__body">
+          <p style="font-size: var(--fs-sm); color: var(--ink-600)">
+            The camera returns to its default angle and the transform fields go back to zero.
+            Geometry and materials stay exactly as they are.
+          </p>
+        </div>
+        <div class="dialog__foot">
+          <button class="btn btn--secondary" type="button" data-confirm-cancel>Keep my view</button>
+          <button class="btn btn--primary" type="button" data-confirm-action>Reset the view</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

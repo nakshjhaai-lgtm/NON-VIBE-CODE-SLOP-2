@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation · PixelForge</title>
+    <meta
+      name="description"
+      content="Install PixelForge, learn the scene graph, wire node materials, bind animation to scroll and export to React, Vue, Svelte or plain HTML and CSS."
+    />
+    <link rel="canonical" href="https://pixelforge.studio/docs.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f0f1f2" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://pixelforge.studio/docs.html" />
+    <meta property="og:title" content="PixelForge documentation" />
+    <meta property="og:description" content="Install, scene graph, materials, export targets, shortcuts and the performance budget." />
+    <meta property="og:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preload" href="assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/site.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="PixelForge, home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+            <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="var(--paper)" />
+            <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+          </svg>
+          <span class="brand__word">PixelForge</span>
+          <span class="brand__badge" translate="no">v2.4.0</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav__link" href="index.html#capabilities">Capabilities</a>
+          <a class="nav__link" href="index.html#examples">Examples</a>
+          <a class="nav__link" href="pricing.html">Pricing</a>
+          <a class="nav__link" href="docs.html" aria-current="page">Docs</a>
+          <a class="nav__link" href="changelog.html">Changelog</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-search-open aria-label="Search this site">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" />
+            </svg>
+          </button>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+            <span class="theme-toggle__thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
+              </svg>
+            </span>
+            <span class="visually-hidden">Theme: <span data-theme-label>Light</span></span>
+          </button>
+          <a class="btn btn--primary btn--sm" href="contact.html" data-append-utm>Start building</a>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Mobile">
+        <a href="index.html#capabilities">Capabilities</a>
+        <a href="index.html#examples">Examples</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="docs.html">Docs</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-actions">
+        <a class="btn btn--primary" href="contact.html" data-append-utm>Start building</a>
+        <button class="btn btn--secondary" type="button" data-search-open>Search this site</button>
+      </div>
+    </div>
+
+    <main id="main">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumbs" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Docs</span></li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="container docs-layout">
+        <aside class="docs-side">
+          <nav class="docs-nav" aria-label="On this page">
+            <h2>On this page</h2>
+            <a href="#install">Install</a>
+            <a href="#scene-graph">Scene graph</a>
+            <a href="#materials">Node materials</a>
+            <a href="#animation">Scroll animation</a>
+            <a href="#export">Export targets</a>
+            <a href="#shortcuts">Keyboard shortcuts</a>
+            <a href="#performance">Performance budget</a>
+            <a href="#case-study">Case study: the viewport</a>
+          </nav>
+          <div class="contact-card">
+            <h2>Stuck on something?</h2>
+            <p style="font-size: var(--fs-sm); color: var(--ink-600)">
+              Send the scene file and a description of what you expected. We answer within one
+              business day.
+            </p>
+            <a class="btn btn--secondary btn--sm" href="contact.html">Ask a question</a>
+          </div>
+        </aside>
+
+        <div class="docs-main">
+          <div class="page-head" style="padding-top: 0; border-bottom: 0">
+            <p class="eyebrow">Documentation</p>
+            <h1>How the editor works</h1>
+            <p class="lead" style="margin-top: var(--s-4)">
+              Five minutes to your first export. Everything below applies to version 2.4.0.
+            </p>
+            <p class="updated" style="margin-top: var(--s-4)">
+              Last updated <time data-date datetime="2026-08-24">24 August 2026</time>
+            </p>
+          </div>
+
+          <h2 id="install">Install</h2>
+          <p>
+            The editor runs at
+            <span class="mono" translate="no">editor.pixelforge.studio</span> as an installable
+            web app, so there is nothing to download for the editor itself. The command line tool
+            is optional and only used to export from a script.
+          </p>
+          <div class="code">
+            <div class="code__bar">
+              <span translate="no">Terminal</span>
+              <button type="button" data-copy="#snippet-install" data-label="Copy">Copy</button>
+            </div>
+            <pre id="snippet-install"><code><span class="tok-com"># Optional: export from a build script</span>
+npm install --save-dev @pixelforge/cli
+
+npx pixelforge export ./hero.pforge --target react --out ./src</code></pre>
+          </div>
+          <div class="callout">
+            <strong>System requirement</strong>
+            <p>
+              The viewport needs WebGL2. Chrome and Edge 113 or newer, Safari 16.4 or newer, or
+              Firefox 115 or newer. Without WebGL2 the editor still opens and shows a static
+              poster image where the viewport would be.
+            </p>
+          </div>
+
+          <h2 id="scene-graph">Scene graph</h2>
+          <p>
+            A scene is a tree. Cameras, lights and meshes are nodes; transforms are inherited;
+            names are stable across exports so the generated code stays readable.
+          </p>
+          <div class="code">
+            <div class="code__bar">
+              <span translate="no">scene.pforge.json</span>
+              <button type="button" data-copy="#snippet-scene-json" data-label="Copy">Copy</button>
+            </div>
+            <pre id="snippet-scene-json"><code>{
+  <span class="tok-key">"version"</span>: <span class="tok-str">"2.4.0"</span>,
+  <span class="tok-key">"nodes"</span>: [
+    { <span class="tok-key">"name"</span>: <span class="tok-str">"Mesh_01"</span>, <span class="tok-key">"geometry"</span>: <span class="tok-str">"geodesic"</span>,
+      <span class="tok-key">"position"</span>: [0, 0, 0], <span class="tok-key">"rotation"</span>: [-29, 34, 0] }
+  ]
+}</code></pre>
+          </div>
+
+          <h2 id="materials">Node materials</h2>
+          <p>
+            A material is a directed graph of nodes. Each node becomes one uniform in the
+            exported shader, which is why the graph stays small enough to read after export.
+          </p>
+          <ul class="bullets" role="list">
+            <li>PBR base, fresnel, gradient and noise nodes cover most surfaces.</li>
+            <li>Custom GLSL nodes are allowed and are emitted verbatim.</li>
+            <li>Every node has a cost estimate shown in the inspector footer.</li>
+          </ul>
+
+          <h2 id="animation">Scroll animation</h2>
+          <p>
+            Keyframes live on a timeline measured in page scroll percentage rather than seconds,
+            so motion stays in step with how fast someone scrolls.
+          </p>
+
+          <h2 id="export">Export targets</h2>
+          <p>
+            Six targets, all generated from the same scene file. Framework exports emit source
+            you own; there is no runtime dependency to keep.
+          </p>
+          <div class="table-wrap">
+            <div class="table-scroll">
+              <table class="data">
+                <caption>Export targets in 2.4.0</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Target</th>
+                    <th scope="col">Output</th>
+                    <th scope="col">Runtime added</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">React</th>
+                    <td translate="no">Scene.tsx</td>
+                    <td class="num-col">0 packages</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vue</th>
+                    <td translate="no">Scene.vue</td>
+                    <td class="num-col">0 packages</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Svelte</th>
+                    <td translate="no">Scene.svelte</td>
+                    <td class="num-col">0 packages</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HTML and CSS</th>
+                    <td translate="no">index.html</td>
+                    <td class="num-col">0 packages</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">glTF</th>
+                    <td translate="no">scene.gltf</td>
+                    <td class="num-col">Not applicable</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">WebGL bundle</th>
+                    <td translate="no">scene.js</td>
+                    <td class="num-col">0 packages</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h2 id="shortcuts">Keyboard shortcuts</h2>
+          <p>Shortcuts are shown with the platform symbol your system uses.</p>
+          <div class="table-wrap">
+            <table class="data">
+              <caption>Viewport and timeline</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Action</th>
+                  <th scope="col">Keys</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Orbit the camera</th>
+                  <td><span class="kbd">←</span> <span class="kbd">→</span> <span class="kbd">↑</span> <span class="kbd">↓</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Frame the selection</th>
+                  <td><span class="kbd">F</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Toggle wireframe</th>
+                  <td><span class="kbd">W</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Open the command palette</th>
+                  <td><span class="kbd" data-kbd-platform>Ctrl</span> <span class="kbd">K</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Export the scene</th>
+                  <td><span class="kbd">⇧</span> <span class="kbd">E</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="performance">Performance budget</h2>
+          <p>
+            The renderer keeps a frame budget of 16 ms on a 2019 laptop class GPU. When a scene
+            exceeds it, the editor says so in the viewport overlay instead of quietly dropping
+            frames.
+          </p>
+          <ul class="bullets" role="list">
+            <li>Draw calls are batched per material, not per mesh.</li>
+            <li>Shadow maps are capped at 2048 px and one directional light.</li>
+            <li>Physics runs on a worker thread and is baked to keyframes on export.</li>
+            <li>Auto rotation stops when the tab is hidden or the viewport scrolls away.</li>
+          </ul>
+
+          <h2 id="case-study">Case study: the viewport on this page</h2>
+          <p>
+            The rotating object at the top of the
+            <a href="index.html">home page</a> is not a video, a GIF or a screenshot. It is a
+            software renderer that projects 42 vertices and 120 edges onto a 2D canvas, drawn
+            with depth cued line weights.
+          </p>
+          <div class="table-wrap">
+            <table class="data">
+              <caption>Measured on this build</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col" class="num-col">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Renderer code</th>
+                  <td class="num-col">4 KB uncompressed</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dependencies</th>
+                  <td class="num-col">0</td>
+                </tr>
+                <tr>
+                  <th scope="row">Animation</th>
+                  <td class="num-col">transform and line alpha only</td>
+                </tr>
+                <tr>
+                  <th scope="row">Reduced motion</th>
+                  <td class="num-col">Stops, renders one frame</td>
+                </tr>
+                <tr>
+                  <th scope="row">Offscreen or hidden tab</th>
+                  <td class="num-col">Loop cancelled</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout">
+            <strong>Why not WebGL</strong>
+            <p>
+              A 120 edge wireframe does not need a GPU pipeline, and a 2D canvas keeps the page
+              at zero third-party scripts. The exported scenes are the ones that use WebGL2.
+            </p>
+          </div>
+
+          <div class="callout">
+            <strong>Next step</strong>
+            <p>
+              Open a template from the <a href="index.html#examples">example scenes</a>, or
+              compare what each plan unlocks on the <a href="pricing.html">pricing page</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="PixelForge, home">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" />
+              <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="var(--paper)" />
+              <circle cx="22.4" cy="20.6" r="2.1" fill="var(--accent)" />
+            </svg>
+            <span class="brand__word">PixelForge</span>
+          </a>
+          <p>A 3D editor that runs in a browser tab and writes code you can commit.</p>
+          <p class="mono">hello@pixelforge.studio</p>
+        </div>
+        <div class="footer-col">
+          <h2>Product</h2>
+          <ul role="list">
+            <li><a href="index.html#capabilities">Capabilities</a></li>
+            <li><a href="index.html#spec">Specification</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Docs</h2>
+          <ul role="list">
+            <li><a href="docs.html">Getting started</a></li>
+            <li><a href="docs.html#export">Export targets</a></li>
+            <li><a href="docs.html#shortcuts">Keyboard shortcuts</a></li>
+            <li><a href="docs.html#performance">Performance budget</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Company</h2>
+          <ul role="list">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="brand.html">Brand assets</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-note">
+        <div class="disclosure">
+          <p>
+            <strong>Demo disclosure.</strong> PixelForge is a fictional product built as a design
+            demonstration. The documentation describes this build; measurements in the case study
+            were taken from this page.
+          </p>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 PixelForge</span>
+          <span>Last updated <time data-date datetime="2026-08-24">24 August 2026</time></span>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <a class="floating-contact" href="contact.html" data-floating-cta data-append-utm>Ask a question</a>
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+    </button>
+    <div class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+    <div class="backdrop" id="search-overlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search this site">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" />
+          </svg>
+          <label class="visually-hidden" for="search-input">Search this site</label>
+          <input id="search-input" type="search" placeholder="Search pages, docs and sections…" autocomplete="off" spellcheck="false" />
+          <button class="btn btn--quiet btn--sm" type="button" data-search-close>Esc</button>
+        </div>
+        <ul class="search-results" id="search-results" role="list"></ul>
+      </div>
+    </div>
+  </body>
+</html>
