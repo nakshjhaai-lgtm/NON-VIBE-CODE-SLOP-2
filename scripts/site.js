@@ -156,7 +156,7 @@
   /* ---------- header, progress, back to top, floating CTA ---------- */
 
   function initScroll() {
-    var header = qs(".site-header");
+    var header = qs(".masthead");
     var bar = qs(".progress__bar");
     var toTop = qs("[data-to-top]");
     var floating = qs("[data-floating-cta]");
@@ -258,7 +258,7 @@
         return;
       }
       var script = doc.createElement("script");
-      script.src = "assets/js/search-index.js";
+      script.src = "scripts/search-index.js";
       script.onload = function () {
         loaded = true;
         index = window.PF_SEARCH || [];
