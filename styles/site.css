@@ -320,12 +320,21 @@ table {
   border: 0;
 }
 
-.skip-link {
-  position: absolute;
+/* Skip link: visually hidden by default, revealed when the keyboard lands on it.
+   Uses the standard visually-hidden utility plus a :focus-visible override so the
+   single focused element pops into the layout instead of the body. */
+.visually-hidden:focus,
+.visually-hidden:focus-visible {
+  position: fixed;
   top: var(--s-2);
   left: var(--s-2);
   z-index: 200;
+  width: auto;
+  height: auto;
+  margin: 0;
   padding: var(--s-2) var(--s-4);
+  overflow: visible;
+  clip-path: none;
   background: var(--ink-900);
   color: var(--paper);
   font-family: var(--mono);
@@ -334,13 +343,7 @@ table {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: var(--r-sm);
-  transform: translateY(-200%);
-  transition: transform var(--dur) var(--ease);
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-  color: var(--paper);
+  white-space: nowrap;
 }
 
 .mono {
@@ -355,7 +358,7 @@ table {
   font-variant-numeric: tabular-nums;
 }
 
-.eyebrow {
+.overline {
   font-family: var(--mono);
   font-size: var(--fs-mono);
   font-weight: 500;
@@ -367,14 +370,14 @@ table {
   gap: var(--s-3);
 }
 
-.eyebrow::after {
+.overline::after {
   content: "";
   flex: 1;
   height: 1px;
   background: var(--border);
 }
 
-.lead {
+.deck {
   font-size: var(--fs-lead);
   color: var(--ink-600);
   max-width: 54ch;
@@ -388,7 +391,7 @@ table {
 
 /* ---------- header ---------- */
 
-.site-header {
+.masthead {
   position: sticky;
   top: 0;
   z-index: 60;
@@ -396,7 +399,7 @@ table {
   border-bottom: 1px solid var(--border);
 }
 
-.site-header[data-scrolled="true"] {
+.masthead[data-scrolled="true"] {
   border-bottom-color: var(--border-strong);
 }
 
@@ -862,8 +865,13 @@ main {
 .viewport__grid {
   position: absolute;
   inset: 0;
-  opacity: 0.5;
   pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(to right, var(--border-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-strong) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0;
 }
 
 .viewport__hud {
@@ -2867,7 +2875,7 @@ table.data .num-col {
     background: #ffffff;
     color: #000000;
   }
-  .site-header,
+  .masthead,
   .site-footer .footer-note .disclosure,
   .floating-contact,
   .to-top,

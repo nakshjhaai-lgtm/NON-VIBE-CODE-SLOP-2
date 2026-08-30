@@ -7,21 +7,21 @@
 
 ## Pages
 
-- [Home](https://pixelforge.studio/): live viewport preview, six capabilities, workflow,
+- [Home](https://pixelforge-editor.netlify.app/): live viewport preview, six capabilities, workflow,
   technical specification, example scenes, plan summary, seven FAQs.
-- [Pricing](https://pixelforge.studio/pricing.html): Free, Studio and Team plans, monthly or
+- [Pricing](https://pixelforge-editor.netlify.app/pricing.html): Free, Studio and Team plans, monthly or
   yearly billing, full feature comparison table, five billing FAQs.
-- [Documentation](https://pixelforge.studio/docs.html): install, scene graph, node materials,
+- [Documentation](https://pixelforge-editor.netlify.app/docs.html): install, scene graph, node materials,
   scroll animation, export targets, keyboard shortcuts, performance budget, renderer case study.
-- [Changelog](https://pixelforge.studio/changelog.html): release notes for 2.4.0, 2.3.0, 2.2.1
+- [Changelog](https://pixelforge-editor.netlify.app/changelog.html): release notes for 2.4.0, 2.3.0, 2.2.1
   and 2.2.0.
-- [Contact](https://pixelforge.studio/contact.html): message form, 14 day trial form, direct
+- [Contact](https://pixelforge-editor.netlify.app/contact.html): message form, 14 day trial form, direct
   contact routes.
-- [Brand assets](https://pixelforge.studio/brand.html): logo mark, wordmark, colour tokens,
+- [Brand assets](https://pixelforge-editor.netlify.app/brand.html): logo mark, wordmark, colour tokens,
   typefaces, usage rules.
-- [Privacy policy](https://pixelforge.studio/privacy.html): what is stored locally, which
+- [Privacy policy](https://pixelforge-editor.netlify.app/privacy.html): what is stored locally, which
   storage keys are used, and what is not collected.
-- [Terms of service](https://pixelforge.studio/terms.html): accounts, acceptable use, billing,
+- [Terms of service](https://pixelforge-editor.netlify.app/terms.html): accounts, acceptable use, billing,
   liability, termination.
 
 ## Facts about version 2.4.0
@@ -35,7 +35,7 @@
 ## Implementation notes
 
 - Static HTML, hand written CSS, vanilla JavaScript. No framework, no build step, no CDN.
-- Design tokens live in `assets/css/site.css` under `:root` and `[data-theme="dark"]`.
+- Design tokens live in `styles/site.css` under `:root` and `[data-theme="dark"]`.
 - Typefaces: Archivo (variable, 400 to 800) and IBM Plex Mono (400, 500), self hosted and
   subset to Latin.
 

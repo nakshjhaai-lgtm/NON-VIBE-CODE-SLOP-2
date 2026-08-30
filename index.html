@@ -8,19 +8,19 @@
       name="description"
       content="PixelForge is a 3D editor that runs in the browser and exports React, Vue, Svelte or plain HTML and CSS. Live viewport, node materials, scroll timeline, no build step."
     />
-    <link rel="canonical" href="https://pixelforge.studio/" />
+    <link rel="canonical" href="https://pixelforge-editor.netlify.app/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#f0f1f2" />
     <meta name="color-scheme" content="light dark" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pixelforge.studio/" />
+    <meta property="og:url" content="https://pixelforge-editor.netlify.app/" />
     <meta property="og:title" content="PixelForge: a browser 3D editor that exports code" />
     <meta
       property="og:description"
       content="Model in the browser, then export React, Vue, Svelte or plain HTML and CSS. Live viewport, node materials, scroll timeline."
     />
-    <meta property="og:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+    <meta property="og:image" content="https://pixelforge-editor.netlify.app/media/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="PixelForge wordmark beside a wireframe sphere on a light graphite background." />
@@ -31,31 +31,31 @@
       name="twitter:description"
       content="Model in the browser, then export React, Vue, Svelte or plain HTML and CSS."
     />
-    <meta name="twitter:image" content="https://pixelforge.studio/assets/img/og-image.png" />
+    <meta name="twitter:image" content="https://pixelforge-editor.netlify.app/media/og-image.png" />
 
-    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="icon" href="media/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="media/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="media/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.webmanifest" />
 
     <link
       rel="preload"
-      href="assets/fonts/archivo-latin-wght-normal.woff2"
+      href="fonts/archivo-latin-wght-normal.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="assets/fonts/ibm-plex-mono-latin-400-normal.woff2"
+      href="fonts/ibm-plex-mono-latin-400-normal.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="assets/css/site.css" />
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/site.js" defer></script>
-    <script src="assets/js/viewport.js" defer></script>
+    <link rel="stylesheet" href="styles/site.css" />
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/site.js" defer></script>
+    <script src="scripts/viewport.js" defer></script>
 
     <script type="application/ld+json">
       {
@@ -63,9 +63,9 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://pixelforge.studio/#org",
+            "@id": "https://pixelforge-editor.netlify.app/#org",
             "name": "PixelForge",
-            "url": "https://pixelforge.studio/",
+            "url": "https://pixelforge-editor.netlify.app/",
             "email": "hello@pixelforge.studio",
             "description": "Maker of a browser based 3D editor that exports web code."
           },
@@ -74,9 +74,9 @@
             "name": "PixelForge",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web browser",
-            "url": "https://pixelforge.studio/",
+            "url": "https://pixelforge-editor.netlify.app/",
             "softwareVersion": "2.4.0",
-            "publisher": { "@id": "https://pixelforge.studio/#org" },
+            "publisher": { "@id": "https://pixelforge-editor.netlify.app/#org" },
             "offers": [
               {
                 "@type": "Offer",
@@ -133,11 +133,11 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="visually-hidden" href="#main">Skip to content</a>
 
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
 
-    <header class="site-header">
+    <header class="masthead">
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="PixelForge, home">
           <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
@@ -214,9 +214,9 @@
     <main id="main">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero__grid">
-          <p class="eyebrow">3D editor for the web</p>
+          <p class="overline">3D editor for the web</p>
           <h1 id="hero-title">Model in 3D. Ship it as <em>code</em>.</h1>
-          <p class="lead">
+          <p class="deck">
             PixelForge is a scene editor that runs in a browser tab and writes code you can
             commit. Build geometry, wire up a material, bind it to scroll, then export React,
             Vue, Svelte or plain HTML and CSS. No plugin, no build step, no lock-in.
@@ -274,14 +274,7 @@
               <div class="panel-center">
                 <div class="viewport" data-main-viewport>
                   <canvas data-main-canvas aria-hidden="true"></canvas>
-                  <svg class="viewport__grid" aria-hidden="true" focusable="false">
-                    <defs>
-                      <pattern id="vpgrid" width="32" height="32" patternUnits="userSpaceOnUse">
-                        <path d="M32 0H0v32" fill="none" stroke="currentColor" stroke-width="0.5" />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#vpgrid)" color="var(--border-strong)" />
-                  </svg>
+                  <div class="viewport__grid" aria-hidden="true"></div>
                   <div class="viewport__hud">
                     <p class="viewport__readout" data-viewport-readout>rx 0° · ry 0° · 60 fps</p>
                     <p class="viewport__hint">Drag to orbit · <span class="kbd">←</span> <span class="kbd">→</span></p>
@@ -633,7 +626,7 @@
               </div>
               <h3>Lattice grid</h3>
               <p class="scene__desc">
-                A three by three by three lattice used to demonstrate instance transforms and
+                A three by three by three lattice used to demonstrate instance placement and
                 per-instance colour.
               </p>
               <p class="scene__meta"><span>Template</span><span translate="no">27 points</span><span>4 nodes</span></p>
@@ -1091,7 +1084,7 @@
         </div>
         <div class="dialog__body">
           <p style="font-size: var(--fs-sm); color: var(--ink-600)">
-            The camera returns to its default angle and the transform fields go back to zero.
+            The camera returns to its default angle and the position fields go back to zero.
             Geometry and materials stay exactly as they are.
           </p>
         </div>
