@@ -21,6 +21,19 @@
   [headers.values]
     Cache-Control = "public, max-age=604800, must-revalidate"
 
+# Icons are masked by CSS and never change without a filename change, so they
+# can sit in cache for a week alongside the rest of the static media.
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
+# Self-hosted, subset and immutable for the life of the file.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/*.html"
   [headers.values]
