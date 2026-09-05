@@ -346,6 +346,68 @@ table {
   white-space: nowrap;
 }
 
+/* ---------- icon system ----------
+   Icons are external files in media/icons/, painted through a CSS mask so they
+   still inherit currentColor and both themes. One source of truth per glyph:
+   markup asks for a name and a size, never for path data. */
+
+.i {
+  display: inline-block;
+  flex: none;
+  inline-size: var(--i-size, 1em);
+  block-size: var(--i-size, 1em);
+  background-color: currentColor;
+  -webkit-mask: var(--i-src) center / contain no-repeat;
+  mask: var(--i-src) center / contain no-repeat;
+}
+
+.i--check { --i-src: url("../media/icons/check.svg"); }
+.i--search { --i-src: url("../media/icons/search.svg"); }
+.i--chevron { --i-src: url("../media/icons/chevron.svg"); }
+.i--menu { --i-src: url("../media/icons/menu.svg"); }
+.i--arrow-up { --i-src: url("../media/icons/arrow-up.svg"); }
+.i--sun { --i-src: url("../media/icons/sun.svg"); }
+.i--scene { --i-src: url("../media/icons/scene.svg"); }
+.i--camera { --i-src: url("../media/icons/camera.svg"); }
+.i--light { --i-src: url("../media/icons/light.svg"); }
+.i--mesh { --i-src: url("../media/icons/mesh.svg"); }
+.i--ground { --i-src: url("../media/icons/ground.svg"); }
+.i--viewport { --i-src: url("../media/icons/viewport.svg"); }
+.i--nodes { --i-src: url("../media/icons/nodes.svg"); }
+.i--timeline { --i-src: url("../media/icons/timeline.svg"); }
+.i--instancing { --i-src: url("../media/icons/instancing.svg"); }
+.i--physics { --i-src: url("../media/icons/physics.svg"); }
+.i--export { --i-src: url("../media/icons/export.svg"); }
+.i--empty { --i-src: url("../media/icons/empty.svg"); }
+
+/* The brand lockup is a real image file, not markup, so it can be dropped into
+   a deck or a README unchanged. Two files, one per theme. */
+.brand__mark {
+  inline-size: 26px;
+  block-size: 26px;
+  flex: none;
+}
+
+/* Spacing and type utilities. These exist so no page has to reach for an inline
+   style: every value below is a token, so a heading on the brand page and a
+   heading on the docs page land on the same rhythm. */
+
+.mt-2 { margin-top: var(--s-2); }
+.mt-3 { margin-top: var(--s-3); }
+.mt-4 { margin-top: var(--s-4); }
+.mt-5 { margin-top: var(--s-5); }
+
+.pb-9 { padding-bottom: var(--s-9); }
+.pblock-6 { padding-block: var(--s-6); }
+.pblock-7 { padding-block: var(--s-7); }
+
+.t-h4 { font-size: var(--fs-h4); }
+.t-muted { font-size: var(--fs-sm); color: var(--ink-600); }
+.t-quiet { color: var(--ink-500); }
+
+.rule-b { border-bottom: 1px solid var(--border); }
+.anchor-offset { scroll-margin-top: calc(var(--header-h) + var(--s-5)); }
+
 .mono {
   font-family: var(--mono);
   font-size: var(--fs-mono);
@@ -515,10 +577,14 @@ table {
   transform: translateY(0.5px);
 }
 
+/* Interaction always increases contrast: the primary button darkens rather
+   than lightening, and carries a hairline inner highlight so the fill reads as
+   a pressed key instead of a flat rectangle. */
 .btn--primary {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--on-accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-1);
 }
 
 .btn--primary:hover {
@@ -595,13 +661,8 @@ table {
   border-color: var(--border-strong);
 }
 
-.icon-btn svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.icon-btn .i {
+  --i-size: 18px;
 }
 
 /* ---------- theme toggle ---------- */
@@ -629,12 +690,8 @@ table {
   transition: transform var(--dur) var(--ease);
 }
 
-.theme-toggle__thumb svg {
-  width: 13px;
-  height: 13px;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  fill: none;
+.theme-toggle__thumb .i {
+  --i-size: 13px;
 }
 
 .theme-toggle[aria-pressed="true"] .theme-toggle__thumb {
@@ -677,13 +734,34 @@ main {
   max-width: 58ch;
 }
 
+/* Section numbers behave like plate numbers on a technical drawing: the rule
+   after them runs to the edge of the heading block, which is what gives the
+   page its "specification sheet" cadence rather than a stack of cards. */
 .section-index {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
   font-family: var(--mono);
   font-size: var(--fs-mono);
   font-weight: 500;
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--accent-ink);
+}
+
+.section-index::before {
+  content: "";
+  inline-size: 18px;
+  block-size: 1px;
+  flex: none;
+  background: var(--accent);
+}
+
+.section-index::after {
+  content: "";
+  flex: 1;
+  block-size: 1px;
+  background: var(--border);
 }
 
 /* ---------- hero ---------- */
@@ -719,11 +797,15 @@ main {
   margin-top: var(--s-6);
 }
 
+/* The hero facts sit on a ruled rail with tick marks between them, so the
+   opening screen reads as a spec plate rather than a row of feature bullets. */
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2) var(--s-5);
   margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border);
   font-family: var(--mono);
   font-size: var(--fs-mono);
   letter-spacing: 0.04em;
@@ -747,11 +829,44 @@ main {
 
 /* ---------- product frame (app chrome) ---------- */
 
+/* The editor frame reads as a mounted instrument: a two-layer shadow (ambient
+   plus direct, per the design notes) lifts it off the paper, and four corner
+   registration ticks borrow the language of a drafting sheet. The ticks are
+   drawn from the border token, so they follow the theme without extra colour. */
 .frame {
+  position: relative;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-md);
   background: var(--panel);
   overflow: hidden;
+  box-shadow: var(--shadow-1), var(--shadow-2);
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inline-size: 9px;
+  block-size: 9px;
+  pointer-events: none;
+  border: 1px solid var(--accent);
+  opacity: 0.55;
+}
+
+/* top-left and bottom-right ticks: two L shapes, opposite corners */
+.frame::before {
+  inset-block-start: 6px;
+  inset-inline-start: 6px;
+  border-inline-end: 0;
+  border-block-end: 0;
+}
+
+.frame::after {
+  inset-block-end: 6px;
+  inset-inline-end: 6px;
+  border-inline-start: 0;
+  border-block-start: 0;
 }
 
 .frame__bar {
@@ -834,11 +949,8 @@ main {
 }
 
 .tree .glyph {
-  width: 14px;
-  height: 14px;
-  stroke: var(--ink-400);
-  stroke-width: 1.6;
-  flex: none;
+  --i-size: 14px;
+  color: var(--ink-400);
 }
 
 .viewport {
@@ -1035,17 +1147,41 @@ figcaption,
   border-top: 1px solid var(--border);
 }
 
+/* Capability rows are a list, not a grid of cards — the constraint document is
+   explicit that "three feature cards in a row" is the tell. Hovering a row
+   lights a 2px accent edge on the leading side, the same affordance the editor
+   uses to mark the selected object in the outliner. */
 .capability {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--s-3);
   padding-block: var(--s-5);
+  padding-inline-start: 0;
   border-bottom: 1px solid var(--border);
-  transition: background-color var(--dur-fast) var(--ease);
+  transition: background-color var(--dur) var(--ease),
+    padding-inline-start var(--dur) var(--ease);
+}
+
+.capability::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform var(--dur) var(--ease);
 }
 
 .capability:hover {
   background: var(--panel);
+  padding-inline-start: var(--s-4);
+}
+
+.capability:hover::before {
+  transform: scaleY(1);
 }
 
 .capability__index {
@@ -1080,17 +1216,13 @@ figcaption,
 }
 
 .capability__mark {
-  width: 32px;
-  height: 32px;
-  stroke: var(--ink-700);
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex: none;
+  --i-size: 32px;
+  color: var(--ink-700);
+  transition: color var(--dur) var(--ease);
 }
 
 .capability:hover .capability__mark {
-  stroke: var(--accent);
+  color: var(--accent);
 }
 
 /* ---------- steps ---------- */
@@ -1177,11 +1309,8 @@ figcaption,
   background: var(--panel);
 }
 
-.code__bar svg {
-  width: 13px;
-  height: 13px;
-  stroke: currentColor;
-  stroke-width: 1.6;
+.code__bar .i {
+  --i-size: 13px;
 }
 
 .code pre {
@@ -1302,6 +1431,7 @@ table.data .num-col {
 
 .plan--featured {
   background: var(--accent-tint);
+  box-shadow: inset 2px 0 0 var(--accent);
 }
 
 .plan__name {
@@ -1343,12 +1473,10 @@ table.data .num-col {
   align-items: start;
 }
 
-.plan__list svg {
-  width: 15px;
-  height: 15px;
-  stroke: var(--accent-ink);
-  stroke-width: 2;
-  margin-top: 4px;
+.plan__list .i {
+  --i-size: 15px;
+  color: var(--accent-ink);
+  margin-top: 5px;
 }
 
 .plan__note {
@@ -1420,6 +1548,9 @@ table.data .num-col {
   contain-intrinsic-size: auto 320px;
 }
 
+/* Scene thumbnails sit slightly recessed, then lift on hover. Border and
+   shadow move together so the edge stays crisp at both states, and the accent
+   only appears on interaction rather than decorating the resting page. */
 .scene__frame {
   position: relative;
   border: 1px solid var(--border);
@@ -1427,6 +1558,16 @@ table.data .num-col {
   background: var(--sunken);
   aspect-ratio: 3 / 2;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.scene:hover .scene__frame,
+.scene:focus-within .scene__frame {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-1), var(--shadow-2);
+  transform: translateY(-2px);
 }
 
 .scene__frame canvas {
@@ -1495,11 +1636,9 @@ table.data .num-col {
   justify-items: center;
 }
 
-.empty-state svg {
-  width: 34px;
-  height: 34px;
-  stroke: var(--ink-400);
-  stroke-width: 1.4;
+.empty-state .i {
+  --i-size: 34px;
+  color: var(--ink-400);
 }
 
 /* ---------- faq ---------- */
@@ -1544,13 +1683,15 @@ table.data .num-col {
 }
 
 .faq__chev {
+  --i-size: 16px;
   margin-inline-start: auto;
-  width: 16px;
-  height: 16px;
-  stroke: var(--ink-400);
-  stroke-width: 1.8;
-  flex: none;
-  transition: transform var(--dur) var(--ease);
+  color: var(--ink-400);
+  transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.faq__q:hover .faq__chev,
+.faq__item[data-open="true"] .faq__chev {
+  color: var(--accent);
 }
 
 .faq__item[data-open="true"] .faq__chev {
@@ -1730,16 +1871,13 @@ table.data .num-col {
   background: var(--danger-tint);
 }
 
-.form-status svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--ok);
-  stroke-width: 2;
-  flex: none;
+.form-status .i {
+  --i-size: 20px;
+  color: var(--ok);
 }
 
-.form-status[data-state="error"] svg {
-  stroke: var(--danger);
+.form-status[data-state="error"] .i {
+  color: var(--danger);
 }
 
 /* ---------- footer ---------- */
@@ -1915,12 +2053,9 @@ table.data .num-col {
   border-bottom: 1px solid var(--border);
 }
 
-.search-field svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--ink-400);
-  stroke-width: 1.7;
-  flex: none;
+.search-field .i {
+  --i-size: 18px;
+  color: var(--ink-400);
 }
 
 .search-field input {
@@ -2136,11 +2271,8 @@ table.data .num-col {
   border-color: var(--ink-900);
 }
 
-.to-top svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  stroke-width: 1.8;
+.to-top .i {
+  --i-size: 18px;
 }
 
 /* ---------- mobile nav ---------- */
@@ -2161,11 +2293,8 @@ table.data .num-col {
   text-transform: uppercase;
 }
 
-.nav-toggle svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 1.8;
+.nav-toggle .i {
+  --i-size: 16px;
 }
 
 .mobile-nav {
