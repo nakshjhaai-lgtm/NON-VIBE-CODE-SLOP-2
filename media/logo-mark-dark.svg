@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PixelForge mark">
+  <title>PixelForge mark</title>
+  <rect x="2" y="2" width="28" height="28" rx="6" fill="#e9ecec" />
+  <path d="M11 23V9h10v3.6h-6.2v2.6h5.6v3.6h-5.6V23z" fill="#0e1113" />
+  <circle cx="22.4" cy="20.6" r="2.1" fill="#ff6b3d" />
+</svg>
